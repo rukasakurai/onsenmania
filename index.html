@@ -1,10 +1,19 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+<script>
+var onsens;
+var JSON_FILE_URL = 'onsens.json';
+$(document).ready(function(){
+  $.getJSON(JSON_FILE_URL, function(data) {
+    onsens=data;
+  });
+});
+</script>
 <script>
 function displayOnsens() {
-  var onsensJSON='[{"name":"草津温泉","type":"酸性泉","url":"http://travel.rakuten.co.jp/onsen/gunma/OK00259.html"},{"name":"強羅温泉","type":"塩化物泉","url":"http://travel.rakuten.co.jp/onsen/hakone/OK00317.html"}]';
-  var onsens=JSON.parse(onsensJSON);
   var root=document.getElementById('onsens');
   var tab=document.createElement('table');
   var tbo=document.createElement('tbody');
