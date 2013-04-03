@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="refresh" content="0; url=http://infinite-lowlands-5322.herokuapp.com/"> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+<script>
+var onsens;
+var JSON_FILE_URL = 'onsens.json';
+$(document).ready(function(){
+  $.getJSON(JSON_FILE_URL, function(data) {
+    onsens=data;
+  });
+});
+</script>
+<script>
+function displayOnsens() {
+  var root=document.getElementById('onsens');
+  var tab=document.createElement('table');
+  var tbo=document.createElement('tbody');
+  var row, cell;
+  for(var i=0;i<onsens.length;i++){
+    row=document.createElement('tr');
+    cell=document.createElement('td');
+    var aTag = document.createElement('a');
+    aTag.setAttribute('href',onsens[i].url);
+    aTag.innerHTML=onsens[i].name;
+    cell.appendChild(aTag);
+    row.appendChild(cell); 
+    cell=document.createElement('td');
+    cell.appendChild(document.createTextNode(onsens[i].type));
+    row.appendChild(cell); 
+    tbo.appendChild(row);
+  }
+  tab.appendChild(tbo);
+  root.appendChild(tab);
+  document.getElementById("demo").innerHTML=Date();
+}
+</script>
+</head>
+<body>
+<h1>温泉マニア</h1>
+<p id="demo">Here are the best hot springs in Japan!</p>
+<div id="onsens"></div>
+<button type="button" onclick="displayOnsens()">Display Onsens</button>
+</body>
+</html>
