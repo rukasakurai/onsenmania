@@ -3,39 +3,26 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
 </script>
-<script>
-var onsens;
-var JSON_FILE_URL = 'onsens.json';
-$(document).ready(function(){
-  $.getJSON(JSON_FILE_URL, function(data) {
-    onsens=data;
-  });
-});
+<script src="onsenmania.js">
 </script>
-<script>
-function displayOnsens() {
-  var root=document.getElementById('onsens');
-  var tab=document.createElement('table');
-  var tbo=document.createElement('tbody');
-  var row, cell;
-  for(var i=0;i<onsens.length;i++){
-    row=document.createElement('tr');
-    cell=document.createElement('td');
-    var aTag = document.createElement('a');
-    aTag.setAttribute('href',onsens[i].url);
-    aTag.innerHTML=onsens[i].name;
-    cell.appendChild(aTag);
-    row.appendChild(cell); 
-    cell=document.createElement('td');
-    cell.appendChild(document.createTextNode(onsens[i].type));
-    row.appendChild(cell); 
-    tbo.appendChild(row);
-  }
-  tab.appendChild(tbo);
-  root.appendChild(tab);
-  document.getElementById("demo").innerHTML=Date();
-}
-</script>
+
+<!-- Copied from Rakuten Travel -->
+<link media="only screen and (max-device-width:720px)" href="http://img.travel.rakuten.co.jp/share/themes/onsen/css/iphone.css" type="text/css" rel="stylesheet">
+<link media="screen and (min-device-width:721px)" href="http://img.travel.rakuten.co.jp/share/themes/onsen/css/import.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="http://img.travel.rakuten.co.jp/share/common/css/thickbox.css" type="text/css" media="screen">
+<link rel="stylesheet" href="http://img.travel.rakuten.co.jp/share/rtl/css/util.calendar.css" type="text/css" media="screen">
+<!--[if IE]>
+<link href="http://img.travel.rakuten.co.jp/share/themes/onsen/css/import.css" type="text/css" rel="stylesheet">
+<![endif]-->
+<link media="print" href="http://img.travel.rakuten.co.jp/share/themes/onsen/css/print.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="http://img.travel.rakuten.co.jp/share/common/js/lib/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://img.travel.rakuten.co.jp/share/common/js/rakutenTr_thickbox.js"></script>
+<script type="text/javascript" charset="UTF-8" src="http://img.travel.rakuten.co.jp/share/rtl/js/search.js"></script>
+<script type="text/javascript" charset="UTF-8" src="http://img.travel.rakuten.co.jp/share/themes/onsen/js/dh.onsen.js"></script>
+<script type="text/javascript" src="http://img.travel.rakuten.co.jp/share/themes/onsen/js/SpryTabbedPanels.js"></script>
+<script language="JavaScript" type="text/javascript" src="http://img.travel.rakuten.co.jp/share/themes/airpack/js/rakutenTr_domesticAirPackageCarrier.js"></script>
+<!-- Copied from Rakuten Travel -->
+
 </head>
 <body>
 <h1>温泉マニア</h1>
@@ -43,6 +30,9 @@ function displayOnsens() {
 <div id="onsens"></div>
 <button type="button" onclick="displayOnsens()">Display Onsens</button>
 
+<div id="widewrapper">
+<div id="contentsArea">
+<div id="mainArea">
 <div id="mapArea">
 <h2><span>首都圏</span>の温泉・お風呂マップ</h2>
 <div id="area_metropolitanarea" class="mapBox">
@@ -71,6 +61,9 @@ function displayOnsens() {
 </ul>
 <!--/.mapBox--></div>
 <!--/mapArea-->
+</div>
+</div>
+</div>
 </div>
 
 </body>
