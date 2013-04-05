@@ -26,6 +26,11 @@ function displayOnsens() {
   }
   tab.appendChild(tbo);
   root.appendChild(tab);
-  
+
   $("button").hide();   
+  
+  var url = "http://api.rakuten.co.jp/rws/3.0/rest?developerId=1044214142135754300&operation=SimpleHotelSearch&version=2009-10-20&largeClassCode=japan&middleClassCode=akita&smallClassCode=tazawa";
+  $.get(url,function(data,status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
 }
