@@ -26,5 +26,6 @@ function displayOnsens() {
   }
   tab.appendChild(tbo);
   root.appendChild(tab);
-  document.getElementById("demo").innerHTML=Date();
+  
+  $("button").hide();   
 }
