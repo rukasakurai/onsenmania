@@ -69,3 +69,31 @@ body {
 .clear hr {
 	display:none;
 }
+
+<!-- Zacky -->
+      .clearfix {
+        overflow: hidden;
+        zoom: 1;
+      }
+      .etype {
+        cursor: pointer;
+      }
+      .tag {
+        float: left;
+        list-style-type: none;
+        cursor: pointer;
+        padding: 5px;
+        margin: 5px;
+        border-radius: 5px;
+        background-color: salmon;
+        width: 80px;
+      }
+      #main {
+        float: left;
+        background-color: #eee;
+      }
+      #right-navi {
+        float: left;
+        background-color: #ffa;
+      }
+
