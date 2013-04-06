@@ -23,13 +23,14 @@ alert("clicked tag");
      apiUrl = apiUrl + "&operation=KeywordHotelSearch";
      apiUrl = apiUrl + "&version=2009-10-20";
      apiUrl = apiUrl + "&affiliateId=1105d996.258c6e09.1105d997.52643dfb";
-     apiUrl = apiUrl + "&keyword=草津";
+     //apiUrl = apiUrl + "&keyword=草津";
      $.ajax({
-       url: apiUrl,
+       type: 'GET',
+       url: 'http://api.rakuten.co.jp/rws/3.0/json?developerId=1044214142135754300&operation=KeywordHotelSearch&version=2009-10-20&affiliateId=1105d996.258c6e09.1105d997.52643dfb&keyword=草津',
        dataType: 'jsonp',
-       data: {keyword: keyword},
-       success: function(data) {
-         var hotels = data['Body']['KeywordHotelSearch']['hotel'];
+       //data: {keyword: keyword},
+       success: function(json) {
+         var hotels = json['Body']['KeywordHotelSearch']['hotel'];
          for (var i = 0; i < hotels.length; i++) {
            var hotel = hotels[i];
            console.log(hotel);
@@ -41,8 +42,8 @@ alert("clicked tag");
          }
          $("#right-navi").fadeIn();
        },
-       error: function(e) {
-         // TODO: error handling
+       error: function(XMLHttpRequest, textStatus, errorThrown) {
+    　   alert(XMLHttpRequest + " " + textStatus);
        }
      });
    });
