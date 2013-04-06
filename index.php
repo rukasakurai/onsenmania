@@ -18,7 +18,7 @@ if(isset($_GET["area"])){
       </div></div></div>
     </div> <!-- mainWapper -->
 
-    <div class="sideWrapper">
+    <div class="sideWrapper" id="sideWrapper">
       <?php include_once("sideWrapper.html"); ?>
     </div>
 
