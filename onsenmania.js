@@ -30,6 +30,8 @@ alert("clicked tag");
        dataType: 'jsonp',
        data: {keyword: keyword},
        success: function(json) {
+alert("success");
+/*
          var hotels = json['Body']['KeywordHotelSearch']['hotel'];
          for (var i = 0; i < hotels.length; i++) {
            var hotel = hotels[i];
@@ -41,6 +43,7 @@ alert("clicked tag");
            $(linkHtml).appendTo("#right-navi");
          }
          $("#right-navi").fadeIn();
+*/
        },
        error: function(XMLHttpRequest, textStatus, errorThrown) {
     　   alert(XMLHttpRequest + " " + textStatus);
