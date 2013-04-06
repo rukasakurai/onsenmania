@@ -1,36 +1,43 @@
-var onsens;
-var JSON_FILE_URL = 'onsens.json';
-$(document).ready(function(){
-  $.getJSON(JSON_FILE_URL, function(data) {
-    onsens=data;
-  });
-});
+(function($) {
+ $(function() {
+   var eTypes = {'eSube': 'subesube',
+                 'ePoka': 'pokapoka',
+                 'eGutu': 'gutugutu',
+                 'eKusa': 'kusakusa'};
+   $(".tag").click(function() {
+     var id = $(this).attr("id");
+     if (eTypes[id] !== undefined) {
+       $(".etype").css('color', '#aaa');
+       $(".tag").css('background-color', 'salmon');
+       $(this).css('background-color', '#bf0000');
+       $("." + eTypes[id]).css('color', '#000');
+     }
+   });
 
-function displayOnsens() {
-  var root=document.getElementById('onsens');
-  var tab=document.createElement('table');
-  var tbo=document.createElement('tbody');
-  var row, cell;
-  for(var i=0;i<onsens.length;i++){
-    row=document.createElement('tr');
-    cell=document.createElement('td');
-    var aTag = document.createElement('a');
-    aTag.setAttribute('href',onsens[i].url);
-    aTag.innerHTML=onsens[i].name;
-    cell.appendChild(aTag);
-    row.appendChild(cell);
-    cell=document.createElement('td');
-    cell.appendChild(document.createTextNode(onsens[i].type));
-    row.appendChild(cell);
-    tbo.appendChild(row);
-  }
-  tab.appendChild(tbo);
-  root.appendChild(tab);
-
-  $("button").hide();   
-  
-  var url = "http://api.rakuten.co.jp/rws/3.0/rest?developerId=1044214142135754300&operation=SimpleHotelSearch&version=2009-10-20&largeClassCode=japan&middleClassCode=akita&smallClassCode=tazawa";
-  $.get(url,function(data,status){
-    alert("Data: " + data + "\nStatus: " + status);
-  });
-}
+   $(".onsen").click(function() {
+     $("#right-navi").empty().hide();
+     var keyword = $(this).text();
+     $.ajax({
+       url: '/search',
+       dataType: 'jsonp',
+       data: {keyword: keyword},
+       success: function(data) {
+         var hotels = data['Body']['KeywordHotelSearch']['hotel'];
+         for (var i = 0; i < hotels.length; i++) {
+           var hotel = hotels[i];
+           console.log(hotel);
+           var hotelName = hotel['hotelBasicInfo']['hotelName'];
+           var hotelInformationUrl = hotel['hotelBasicInfo']['hotelInformationUrl'];
+           var hotelThumbnailUrl = hotel['hotelBasicInfo']['hotelThumbnailUrl'];
+           var linkHtml = '<p><img src="' + hotelThumbnailUrl + '"><a href="' + hotelInformationUrl + '" target="_blank">' + hotelName + '</a></p>';
+           $(linkHtml).appendTo("#right-navi");
+         }
+         $("#right-navi").fadeIn();
+       },
+       error: function(e) {
+         // TODO: error handling
+       }
+     });
+   });
+ });
+})(jQuery);
