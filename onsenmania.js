@@ -29,6 +29,7 @@ alert("clicked tag");
        url: 'http://api.rakuten.co.jp/rws/3.0/json?developerId=1044214142135754300&operation=KeywordHotelSearch&version=2009-10-20&affiliateId=1105d996.258c6e09.1105d997.52643dfb',
        dataType: 'jsonp',
        data: {keyword: keyword},
+       callback: 'callBack',
        success: function(json) {
 alert("success");
 /*
