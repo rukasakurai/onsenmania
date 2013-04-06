@@ -1,0 +1,71 @@
+@charset "Unicode";
+/*=========================================================================
+ File Name:	layout.css
+ UpdatedBy: 	2013-April-06
+ =========================================================================*/
+/*
+
+/*
+ style reset
+-------------------------------------------------------------------------*/
+body,div,iframe,
+dl,dt,dd,ul,ol,li,
+h1,h2,h3,h4,h5,h6,
+form,fieldset,
+p,blockquote {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+}
+ul,ol,li,dl,dt,dd {
+	list-style-type: none;
+}
+img {
+	border: 0;
+	vertical-align: bottom;
+}
+table {
+	empty-cells: show;
+}
+sup {
+	vertical-align: text-top;
+}
+sub {
+	vertical-align: text-bottom;
+}
+em {
+	font-style: normal;
+	font-weight: bold;
+}
+
+/*
+ body and base setting
+-------------------------------------------------------------------------*/
+body { 
+	text-align:center;
+}
+#wrap {
+	width:780px;
+	text-align:left;
+	margin:0 auto;
+}
+#inner {
+	margin:0 10px;
+}
+#mainWrap {
+	width:500px;
+	float:left;
+	background-color:#9cf;
+	color:#0000ff;
+}
+#sideWrap {
+	width:250px;
+	float:left;
+	background-color:#ccc;
+}
+.clear {
+	clear:both;
+}  
+.clear hr {
+	display:none;
+}
