@@ -16,11 +16,16 @@ alert("clicked tag");
    });
 
    $(".onsen").click(function() {
-alert("helloooo");
      //$("#right-navi").empty().hide();
      var keyword = $(this).text();
+     var apiUrl = "http://api.rakuten.co.jp/rws/3.0/json?";
+     apiUrl = apiUrl + "developerId=1044214142135754300";
+     apiUrl = apiUrl + "&operation=KeywordHotelSearch";
+     apiUrl = apiUrl + "&version=2009-10-20";
+     apiUrl = apiUrl + "&affiliateId=1105d996.258c6e09.1105d997.52643dfb";
+     apiUrl = apiUrl + "&keyword=草津";
      $.ajax({
-       url: '/search',
+       url: apiUrl,
        dataType: 'jsonp',
        data: {keyword: keyword},
        success: function(data) {
