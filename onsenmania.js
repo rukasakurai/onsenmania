@@ -23,7 +23,7 @@ alert("clicked tag");
      apiUrl = apiUrl + "&operation=KeywordHotelSearch";
      apiUrl = apiUrl + "&version=2009-10-20";
      apiUrl = apiUrl + "&affiliateId=1105d996.258c6e09.1105d997.52643dfb";
-     var keyword="草津";
+     //var keyword="草津";
      $.ajax({
        type: 'GET',
        url: 'http://api.rakuten.co.jp/rws/3.0/json?developerId=1044214142135754300&operation=KeywordHotelSearch&version=2009-10-20&affiliateId=1105d996.258c6e09.1105d997.52643dfb',
@@ -50,3 +50,36 @@ alert("clicked tag");
    });
  });
 })(jQuery);
+
+function displayOnsenResults(keyword) {
+     $("#sideWrapper").empty().hide();
+     var apiUrl = "http://api.rakuten.co.jp/rws/3.0/json?";
+     apiUrl = apiUrl + "developerId=1044214142135754300";
+     apiUrl = apiUrl + "&operation=KeywordHotelSearch";
+     apiUrl = apiUrl + "&version=2009-10-20";
+     apiUrl = apiUrl + "&affiliateId=1105d996.258c6e09.1105d997.52643dfb";
+     //var keyword="草津";
+     $.ajax({
+       type: 'GET',
+       url: 'http://api.rakuten.co.jp/rws/3.0/json?developerId=1044214142135754300&operation=KeywordHotelSearch&version=2009-10-20&affiliateId=1105d996.258c6e09.1105d997.52643dfb',
+       dataType: 'jsonp',
+       data: {keyword: keyword},
+       jsonp: 'callBack',
+       success: function(json) {
+         var hotels = json['Body']['KeywordHotelSearch']['hotel'];
+         for (var i = 0; i < hotels.length; i++) {
+           var hotel = hotels[i];
+           console.log(hotel);
+           var hotelName = hotel['hotelBasicInfo']['hotelName'];
+           var hotelInformationUrl = hotel['hotelBasicInfo']['hotelInformationUrl'];
+           var hotelThumbnailUrl = hotel['hotelBasicInfo']['hotelThumbnailUrl'];
+           var linkHtml = '<p><img src="' + hotelThumbnailUrl + '"><a href="' + hotelInformationUrl + '" target="_blank">' + hotelName + '</a></p>';
+           $(linkHtml).appendTo("#sideWrapper");
+         }
+         $("#sideWrapper").fadeIn();
+       },
+       error: function(XMLHttpRequest, textStatus, errorThrown) {
+    　   alert(XMLHttpRequest + " " + textStatus);
+       }
+     });
+   }
