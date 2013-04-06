@@ -5,6 +5,7 @@
                  'eGutu': 'gutugutu',
                  'eKusa': 'kusakusa'};
    $(".tag").click(function() {
+alert("clicked tag");
      var id = $(this).attr("id");
      if (eTypes[id] !== undefined) {
        $(".etype").css('color', '#aaa');
@@ -15,7 +16,8 @@
    });
 
    $(".onsen").click(function() {
-     $("#right-navi").empty().hide();
+alert("helloooo");
+     //$("#right-navi").empty().hide();
      var keyword = $(this).text();
      $.ajax({
        url: '/search',
