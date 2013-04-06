@@ -5,7 +5,6 @@
                  'eGutu': 'gutugutu',
                  'eKusa': 'kusakusa'};
    $(".tag").click(function() {
-alert("clicked tag");
      var id = $(this).attr("id");
      if (eTypes[id] !== undefined) {
        $(".etype").css('color', '#aaa');
